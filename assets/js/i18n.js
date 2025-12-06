@@ -166,8 +166,10 @@ const i18n = (() => {
   };
 })();
 
-// Initialize on script load
+// Initialize immediately when script loads
+i18n.init();
+
+// Update UI when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-  i18n.init();
   i18n.updateUI();
 });

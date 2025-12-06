@@ -50,27 +50,24 @@ const app = (() => {
     });
 
     // Handle dropped files
-    dropZone.addEventListener('drop', (e) => {
+    dropZone.addEventListener('drop', async (e) => {
       const files = e.dataTransfer.files;
       if (files.length > 0) {
-        appState.addImages(files);
+        await appState.addImages(files);
       }
     }, false);
 
     // Handle file input change
-    fileInput.addEventListener('change', (e) => {
+    fileInput.addEventListener('change', async (e) => {
       const files = e.target.files;
       if (files.length > 0) {
-        appState.addImages(files);
+        await appState.addImages(files);
         // Reset input
         e.target.value = '';
       }
     });
 
-    // Make drop zone clickable
-    dropZone.addEventListener('click', () => {
-      fileInput.click();
-    });
+    // Note: No need to make drop zone clickable since file input covers it completely
   };
 
   /**
